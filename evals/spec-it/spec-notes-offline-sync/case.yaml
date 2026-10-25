@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: spec-notes-offline-sync
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  A spec.md with journeys such as editing offline, a conflict, and a delete, each test path with a Check line. Decisions record the answered items. Retention of deleted notes, which was never settled, is an open question with a recommendation, and 'sync should feel fast' becomes a measured threshold or an open question.

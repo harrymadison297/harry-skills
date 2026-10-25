@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: deploy-release-vs-rollout
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  The assistant notices that the user says 'push', 'server', and 'node' where the glossary says Deploy and Host, notices that 'rollout' is on the Avoid list but the user means the whole sequence across hosts, notices that deploy.sh overwrites the app in place so no previous release exists to roll back to, and asks the user what 'rollout' should mean. It records the settled terms in docs/glossary.md and writes one ADR for release directories with an atomic symlink, but none for the log timestamps.
