@@ -11,7 +11,7 @@ Each ticket was judged alone. Only a pass over the whole feature finds the journ
 ## Process
 
 1. **Review the whole diff.** Run `reviewing-changes` in whole-feature mode. Each serious finding becomes a fix ticket that goes through step 4.
-2. **Run every journey.** On the finished branch, run every test path of every journey in `spec.md` (`J1.1`, `J1.2`, ...) via `prove-it-work`, in every environment where the whole feature could behave differently. Use the environments in `verify-<app>` and the ones the tickets already ran, and re-run a ticket's scenario only where the combined change makes an earlier result doubtful. Each failure becomes a fix ticket. Stop here until none remain.
+2. **Run every journey.** On the finished branch, run every test path of every journey in `spec.md` (`J1.1`, `J1.2`, ...) via `prove-it-work`, in every environment where the whole feature could behave differently. Use the environments in `docs/how-to-run.md` and the ones the tickets already ran, and re-run a ticket's scenario only where the combined change makes an earlier result doubtful. Each failure becomes a fix ticket. Stop here until none remain.
 3. **Tag.** Tag the last commit that still holds the evidence as `evidence/<feature>`. Push the tag only if the repo has a remote. Evidence is read with `git show evidence/<feature>:<path>`, so it survives the clean up and a squash merge.
 4. **Clean up** in a new commit: delete `tickets/`, `stops/`, and `evidence/`. Stamp `spec.md` and `architecture.md` with "as of <commit>".
 5. **Report** in chat (below). Open no pull request: the user decides how to merge. Offer `learn-from-mistakes` afterward.

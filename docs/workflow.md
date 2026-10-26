@@ -53,7 +53,7 @@ A wrong idea is cheapest to fix at the start. A misunderstood journey costs one 
 ```
 handon                          entry point; the only skill that sets "Status: approved"
 ├─ setup                        records where the repo keeps its glossary, standard, ADRs, run instructions
-└─ make-way                     writes verify-<app>; you run it when that skill is missing or out of date
+└─ make-way                     writes docs/how-to-run.md; you run it when that file is missing or out of date
 
 1 Spec
   ask-until-clear               interview in rounds until nothing is assumed
@@ -150,10 +150,10 @@ A repo that uses the workflow:
 <repo>/
 ├── GLOSSARY.md                  domain terms, written by term-guard
 ├── CLAUDE.md or AGENTS.md       a "Workflow files" block, written by setup
-├── .claude/skills/verify-<app>/ how to start and drive the real system, written by make-way
 ├── evals/<skill>/               cases written by evaluating-skill
 └── docs/
     ├── standards.md             the coding standard that reviewing-changes reads
+    ├── how-to-run.md            how to build, test, and run e2e, written by make-way
     ├── adr/                     ADRs
     ├── lessons.md               mistakes and the checks that block them
     └── features/<feature>/

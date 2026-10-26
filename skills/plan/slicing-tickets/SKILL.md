@@ -17,7 +17,7 @@ Cut the plan into pieces one agent can build, review, and verify in a fresh cont
 | Ordered | It lists the tickets that block it, and only those that truly do. |
 | Walking skeleton | `T01` is the thinnest slice that runs one real test path. Every other ticket waits for it, except preparation tickets. |
 | Preparation first | A refactor or a new test tool is its own ticket and goes first. A mechanical change across the codebase, such as a rename, is cut as expand, migrate in batches, then contract. |
-| E2E scenario | Each ticket carries user actions, what the user observes, and the environments, chosen from `verify-<app>`. Pick every environment where this ticket's change could behave differently (operating system, paths, permissions, deployment), not the cheapest one. Make it strict enough that a half-working system fails it. |
+| E2E scenario | Each ticket carries user actions, what the user observes, and the environments, chosen from `docs/how-to-run.md`. Pick every environment where this ticket's change could behave differently (operating system, paths, permissions, deployment), not the cheapest one. Make it strict enough that a half-working system fails it. |
 | Review label | `Review: human` for tickets touching a public contract, data, security, or logic that tests catch poorly. `T01` is always `human`. Otherwise `auto`. |
 
 ## Ticket file

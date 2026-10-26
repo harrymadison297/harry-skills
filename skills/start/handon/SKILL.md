@@ -12,7 +12,7 @@ Look before you act. Check the repo, say where it stands, and route to the next 
 Read only. Change nothing and ask nothing until you have all of this.
 
 1. `git status`, `git log -20`, and the current branch. The last commit is always green.
-2. The base: `GLOSSARY.md`, `docs/standards.md`, and `.claude/skills/verify-*`.
+2. The base: `GLOSSARY.md`, `docs/standards.md`, and `docs/how-to-run.md`.
 3. Every folder `docs/features/<feature>/`. For each one, find its current step (see Steps) and note any `pause.md`.
 
 ## Report

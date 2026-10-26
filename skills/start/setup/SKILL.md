@@ -17,7 +17,7 @@ The other skills read a glossary, a coding standard, ADRs, and a way to run the 
 | Glossary | `GLOSSARY.md`, `docs/glossary.md` |
 | Coding standard | `docs/standards.md`, `CONTRIBUTING.md`, lint config |
 | ADRs | `docs/adr/`, `docs/decisions/` |
-| How to run the app | `.claude/skills/verify-*`, README, Makefile, package scripts |
+| How to run the app | `docs/how-to-run.md`, README, Makefile, package scripts |
 
 2. **Show** the block below, listing only what exists, and wait for a yes.
 3. **Write** it into `CLAUDE.md`, or `AGENTS.md` if that is the one that exists. If neither exists, ask which to create. Update an existing block in place and leave the rest of the file alone.
@@ -28,7 +28,7 @@ The other skills read a glossary, a coding standard, ADRs, and a way to run the 
 - Glossary: `GLOSSARY.md`
 - Coding standard: `docs/standards.md`
 - ADRs: `docs/adr/`
-- Run the app: `.claude/skills/verify-<app>/SKILL.md`
+- Run the app: `docs/how-to-run.md`
 ```
 
 ## Running again

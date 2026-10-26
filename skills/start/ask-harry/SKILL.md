@@ -31,7 +31,7 @@ Before you say what a skill does, or tell the user to skip one, read its `SKILL.
 | Something is broken, flaky, slow, or regressed | `debugging-failures` |
 | The context is filling up, or you want to stop and resume later | `handoff` |
 | The repo already has a glossary, standard, or ADRs the skills should reuse | `setup` |
-| The agent cannot start or drive the real app, or `verify-<app>` is missing | `make-way` |
+| The agent cannot start or drive the real app, or `docs/how-to-run.md` is missing | `make-way` |
 | The agent made the same mistake twice | `learn-from-mistakes` |
 | Write a doc, commit message, or PR body | `quill-technical-writing` |
 | Text reads as machine-written | `quill-unslop` |
@@ -55,7 +55,7 @@ For anything in this list, tell the user to run `handon`. It checks the repo, fi
 - **`understand-this-code` or `research`.** The first reads your code. The second reads sources outside it.
 - **`research` or `prototyping-designs`.** Use `research` when reading answers the question. Use `prototyping-designs` when something has to run.
 - **`debugging-failures` or `implementing-tickets`.** Use `debugging-failures` for behavior that used to work or should work. Use `implementing-tickets` for a ticket that `handon` hands over.
-- **`setup` or `make-way`.** `setup` records where the repo keeps its docs. `make-way` writes the skill that runs the app.
+- **`setup` or `make-way`.** `setup` records where the repo keeps its docs. `make-way` finds how the app is built and tested, reports it, and writes `docs/how-to-run.md`.
 - **`handoff` or `handon`.** `handoff` pauses a session. `handon` picks it up.
 - **`quill-technical-writing` or `quill-unslop`.** The first sets the standard for new text. The second cleans text that exists.
 - **A small change.** Still `handon`. It proposes the size, and a small change skips steps 1 to 3.
