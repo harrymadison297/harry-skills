@@ -3,11 +3,11 @@
 The target wiring of the skills after `ask-until-clear` and `term-guard` replace the interview inside `spec-it`. Items marked *(proposed)* are not agreed yet.
 
 ```
-build-a-feature                          entry point; finds the current step from files; only it writes "approved"
+handon                                   entry point; checks the repo, reports it, routes to the next skill; only it writes "approved"
 │
 ├─ base (once, lazy)
 │   ├─ setup                             writes the "Workflow files" block into CLAUDE.md/AGENTS.md; does nothing in an empty repo
-│   └─ teach-how-to-run                  creates verify-<app>; called only when prove-it-work needs it and it is missing
+│   └─ make-way                          creates verify-<app>; called only when prove-it-work needs it and it is missing
 │
 ├─ A. CLARIFY ──────────────────────────  one continuous context, until gate 2
 │   ask-until-clear                      interview in rounds; the first question challenges the premise
@@ -40,7 +40,7 @@ build-a-feature                          entry point; finds the current step fro
 │   ├─ machine checks: lint, types, dead code, duplicates    (proposed)
 │   ├─ reviewing-changes                 fresh subagent: standards, spec, tests, places to break
 │   └─ prove-it-work                     runs the real system in the environments the ticket lists
-│       └─ teach-how-to-run              only when verify-<app> is missing
+│       └─ make-way                      only when verify-<app> is missing
 │
 │       a parked ticket parks its dependents; independent tickets continue
 │       the whole loop stops only when the stop report blames the spec or the architecture
@@ -61,6 +61,6 @@ Used when the situation calls for it, not tied to a step:
 
 ```
 debugging-failures   shares its stop rules with implementing-tickets; offers learn-from-mistakes
-handoff              compresses the session when context fills; build-a-feature reads pause.md back
+handoff              compresses the session when context fills; handon reads pause.md back
 quill-unslop         removes patterns that read as machine-written
 ```

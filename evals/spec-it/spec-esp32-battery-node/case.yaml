@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: spec-esp32-battery-node
-context:
-  scaffold_script: place-files.sh
-expected_outcome: |
-  A spec.md with journeys such as a normal cycle, a network outage, and a low battery report, each test path with a Check line. Decisions record the answered items. Low-battery behaviour, which was never settled, is an open question with a recommendation, and 'readings should be accurate' becomes a measured threshold or an open question.

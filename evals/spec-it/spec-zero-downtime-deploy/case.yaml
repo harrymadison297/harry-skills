@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: spec-zero-downtime-deploy
-context:
-  scaffold_script: place-files.sh
-expected_outcome: |
-  A spec.md with journeys such as a normal deploy, a failing host, and a rollback, each test path with a Check line. Decisions record the answered items. How many past releases to keep, which was never settled, is an open question with a recommendation, and 'deploys should be quick' becomes a measured threshold or an open question.

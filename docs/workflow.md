@@ -55,17 +55,17 @@ Three kinds of stop appear in the flow.
 
 A wrong idea is cheapest to fix at the start. A misunderstood journey costs one conversation in step 1. The same mistake found in step 4 costs a spec, an architecture, and code. The flow therefore puts you in steps 1 to 3 and brings you back in step 4 only at the checkpoints.
 
-## How you start: `build-a-feature`
+## How you start: `handon`
 
-Run `build-a-feature` to start or resume. It is the only skill that the model may start on its own.
+Run `handon` to start or resume. It checks the repo first, tells you where it stands, and then routes. It is the only skill that the model may start on its own.
 
 | Skill | What it does | Why it exists |
 |---|---|---|
-| `build-a-feature` | Reads the `Status` lines in the feature folder and the git log, finds the current step, and runs the next skill. Proposes a size for the change, and you confirm in one line. Records your approvals. | You should not need to remember where you are or which skill comes next. |
+| `handon` | Reads the git state, the base files, and the `Status` lines in each feature folder, reports where the repo stands, and routes to the next skill: `setup`, a resume, or a new feature. Proposes a size for a new feature, and you confirm in one line. Records your approvals. | You should not need to remember where you are or which skill comes next. |
 
 **Two sizes.** A *small* change is one ticket that touches no public contract, no data, and nothing unclear. It skips steps 1 to 3: the agent writes the ticket, shows you its e2e scenario, and goes to step 4 with no checkpoint. Every other change is *full* and runs all five steps.
 
-**Status and resume.** `spec.md` and `architecture.md` carry `Status: draft` or `Status: approved`. A ticket moves through the states below. Only `build-a-feature` sets `approved`, and only after you say so. Editing an approved file sends it back to `draft` and reruns its gate. The current step is the first one whose file is missing or still `draft`. There is no separate state file, because it would drift from the commits. After a crash, discard the uncommitted changes and run `build-a-feature` again. The last commit is always green.
+**Status and resume.** `spec.md` and `architecture.md` carry `Status: draft` or `Status: approved`. A ticket moves through the states below. Only `handon` sets `approved`, and only after you say so. Editing an approved file sends it back to `draft` and reruns its gate. The current step is the first one whose file is missing or still `draft`. There is no separate state file, because it would drift from the commits. After a crash, discard the uncommitted changes and run `handon` again. The last commit is always green.
 
 ```mermaid
 stateDiagram-v2
@@ -251,28 +251,34 @@ skills/
 		sources.md                   where each skill's content came from, with licenses
 		session-model.md
 	skills/
-		build-a-feature/SKILL.md
-		setup/SKILL.md
-		teach-how-to-run/SKILL.md
-		spec-it/SKILL.md
-		prototyping-designs/SKILL.md
-		research/SKILL.md
-		designing-architecture/
-			SKILL.md
-			references/              deep-module vocabulary: module, interface, seam, deletion test
-		slicing-tickets/
-			SKILL.md
-			scripts/                 prints the ticket graph (language to be decided)
-		implementing-tickets/SKILL.md
-		reviewing-changes/SKILL.md
-		prove-it-work/SKILL.md
-		shipping-features/SKILL.md
-		learn-from-mistakes/SKILL.md
-		understand-this-code/SKILL.md
-		debugging-failures/SKILL.md
-		handoff/SKILL.md
-		quill-technical-writing/SKILL.md
-		quill-unslop/SKILL.md
+		start/
+			handon/SKILL.md
+			setup/SKILL.md
+			make-way/SKILL.md
+			handoff/SKILL.md
+		plan/
+			ask-until-clear/SKILL.md
+			term-guard/SKILL.md
+			understand-this-code/SKILL.md
+			research/SKILL.md
+			prototyping-designs/SKILL.md
+			spec-it/SKILL.md
+			designing-architecture/
+				SKILL.md
+				references/          deep-module vocabulary: module, interface, seam, deletion test
+			slicing-tickets/
+				SKILL.md
+				scripts/             prints the ticket graph (language to be decided)
+		build/
+			implementing-tickets/SKILL.md
+			debugging-failures/SKILL.md
+			reviewing-changes/SKILL.md
+			prove-it-work/SKILL.md
+			shipping-features/SKILL.md
+		craft/
+			quill-technical-writing/SKILL.md
+			quill-unslop/SKILL.md
+			learn-from-mistakes/SKILL.md
 ```
 
 ### A repo that uses the workflow

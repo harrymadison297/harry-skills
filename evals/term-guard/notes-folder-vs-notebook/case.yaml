@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: notes-folder-vs-notebook
-context:
-  scaffold_script: place-files.sh
-expected_outcome: |
-  The assistant notices that the user says 'folder' and 'memo' where the glossary says Notebook and Note, notices that the code deletes a notebook's notes outright while the user expects a trash, and asks the user to settle what 'trash' means. It records the settled terms in docs/glossary.md and writes one ADR for the decision to use client-generated UUIDs, but none for the date format.

@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: linux-zero-downtime-deploy
-context:
-  scaffold_script: place-files.sh
-expected_outcome: |
-  The assistant restates the goal, challenges the premise, then asks one round of numbered, independent questions with recommended answers. It reads deploy.sh and the README first and asks about the real gaps (no health check, DNS round-robin with no load balancer, manual migrations, no previous release kept), not about facts the files state.

@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: esp32-battery-node
-context:
-  scaffold_script: place-files.sh
-expected_outcome: |
-  The assistant restates the goal, challenges the premise, then asks one round of numbered, independent questions with recommended answers. It reads main.cpp first and asks about what the code makes hard (blocking Wi-Fi, a delay loop that never sleeps, no handling of failed publishes), and about decisions only the user can make (lifetime target, battery, behaviour when offline).

@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: esp32-reading-vs-sample
-context:
-  scaffold_script: place-files.sh
-expected_outcome: |
-  The assistant notices that the user says 'measurement' and 'message' where the glossary says Sample and Report, notices that the firmware keeps nothing across restarts and ignores a failed publish while the user believes unsent samples are kept, and asks the user what survives a power loss. It records the settled terms in docs/glossary.md and writes one ADR for buffering in RTC memory, but none for the LED blink.

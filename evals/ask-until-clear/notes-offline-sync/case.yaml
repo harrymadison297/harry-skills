@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: notes-offline-sync
-context:
-  scaffold_script: place-files.sh
-expected_outcome: |
-  The assistant restates the goal, challenges the premise, then asks one round of numbered, independent questions with recommended answers. It reads the code first and asks about the real problems in it (integer ids, hard deletes, last-write-wins), not about facts the code states.

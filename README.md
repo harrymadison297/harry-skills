@@ -29,15 +29,15 @@ F. Close          shipping-features                        Gate 3: you approve t
 
 From gate 2 on, the agent runs without stopping. It parks a ticket and writes a stop report when three attempts fail, when a decision is yours to make, or when the next step cannot be undone.
 
-Start with `build-a-feature`. It reads the files on disk, finds the current step, and runs the next skill. Run it again to resume a half-finished feature.
+Start with `handon`. It checks git and the files on disk, tells you where the repo stands, and routes to the next skill. Run it again to resume a half-finished feature.
 
 ## Skills
 
 | Skill | Purpose |
 |---|---|
-| `build-a-feature` | Entry point. Finds the current step and runs the next skill. |
+| `handon` | Entry point. Checks the repo state, reports it, and routes to the next skill. |
 | `setup` | Records where the repo keeps its glossary, standards, ADRs, and run instructions. |
-| `teach-how-to-run` | Writes the repo's `verify-<app>` skill, which says how to start and drive the real system. |
+| `make-way` | Writes the repo's `verify-<app>` skill, which says how to start and drive the real system. |
 | `ask-until-clear` | Interviews you in rounds until nothing about a plan is left assumed. |
 | `term-guard` | Writes glossary terms and ADRs as soon as they settle. |
 | `understand-this-code` | Explains the code you are about to change and what a change could break. |
@@ -56,7 +56,7 @@ Start with `build-a-feature`. It reads the files on disk, finds the current step
 | `quill-technical-writing` | Writing standard for docs, commit messages, and PR bodies. |
 | `quill-unslop` | Removes patterns that read as machine-written. |
 
-Most skills set `disable-model-invocation`, so you start them by name or through `build-a-feature`.
+Most skills set `disable-model-invocation`, so you start them by name or through `handon`.
 
 ## Install
 
@@ -66,7 +66,7 @@ The plugin manifest is [.claude-plugin/plugin.json](.claude-plugin/plugin.json).
 claude --plugin-dir /path/to/skills
 ```
 
-Skills are then available as `harry-skills:<skill>`, for example `/harry-skills:build-a-feature`.
+Skills are then available as `harry-skills:<skill>`, for example `/harry-skills:handon`.
 
 ## Documentation
 
