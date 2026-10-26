@@ -2,7 +2,15 @@
   "name": "harry-skills",
   "version": "0.1.0",
   "description": "Skills for trustable code: spec, design, slice, build, prove it works, and ship a feature with evidence.",
+  "author": {
+    "name": "harrymadison297",
+    "url": "https://github.com/harrymadison297"
+  },
+  "homepage": "https://github.com/harrymadison297/skills",
+  "repository": "https://github.com/harrymadison297/skills",
+  "keywords": ["workflow", "spec", "tdd", "code-review", "tickets", "technical-writing"],
   "skills": [
+    "./skills/start/ask-harry",
     "./skills/start/handon",
     "./skills/start/setup",
     "./skills/start/make-way",
@@ -22,6 +30,7 @@
     "./skills/build/shipping-features",
     "./skills/craft/quill-technical-writing",
     "./skills/craft/quill-unslop",
-    "./skills/craft/learn-from-mistakes"
+    "./skills/craft/learn-from-mistakes",
+    "./skills/craft/evaluating-skill"
   ]
 }

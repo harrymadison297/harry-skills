@@ -1,0 +1,20 @@
+{
+  "name": "harry",
+  "owner": {
+    "name": "harrymadison297",
+    "url": "https://github.com/harrymadison297"
+  },
+  "metadata": {
+    "description": "Agent skills that take a feature from idea to a pull request you can trust."
+  },
+  "plugins": [
+    {
+      "name": "harry-skills",
+      "source": "./",
+      "description": "Skills for trustable code: spec, design, slice, build, prove it works, and ship a feature with evidence.",
+      "version": "0.1.0",
+      "category": "workflow",
+      "keywords": ["workflow", "spec", "tdd", "code-review", "tickets", "technical-writing"]
+    }
+  ]
+}
