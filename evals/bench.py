@@ -453,6 +453,9 @@ def cmd_report(a):
     w(f'# Plan skills on {model}: with the skill vs. without\n')
     w(f'Effort `{effort}`, {len(ok)} good runs of {len(rows)}. Medians over {max((r["rep"] for r in ok), default=0) + 1} rep(s) of every case; '
       '`Δ` is `with` against `none`. Raw numbers: `evals/bench-plan-results.json`.\n')
+    fp = f'{a.out}/findings.md'
+    if os.path.exists(fp):
+        w(open(fp).read().rstrip() + '\n')
     w('## Headline: does the skill cost more, and does it help\n')
     w('| Skill | cases×reps | pass none → with | wall s none → with (Δ) | TTFT s | turns | output tok (Δ) | input tok, all calls (Δ) | cost $ none → with (Δ) |')
     w('|---|---|---|---|---|---|---|---|---|')
@@ -478,6 +481,19 @@ def cmd_report(a):
           f"{fmt(g(allN, 'turns'))} → {fmt(g(allK, 'turns'))} | {fmt(g(allN, 'out'))} → {fmt(g(allK, 'out'))} ({delta(g(allN, 'out'), g(allK, 'out'))}) "
           f"| {fmt(g(allN, 'in_total'))} → {fmt(g(allK, 'in_total'))} ({delta(g(allN, 'in_total'), g(allK, 'in_total'))}) "
           f"| {fmt(g(allN, 'cost'), 3)} → {fmt(g(allK, 'cost'), 3)} ({delta(g(allN, 'cost'), g(allK, 'cost'))}) |")
+    w('\n**Totals over every run** (sums, not medians; the medians above hide the long runs):\n')
+    w('| Skill | wall s none → with | output tok none → with | input tok none → with | cost $ none → with |')
+    w('|---|---|---|---|---|')
+    tot = {'none': [0, 0, 0, 0], 'with': [0, 0, 0, 0]}
+    for s in skills:
+        row = {}
+        for cfg, rs in (('none', agg[s][0]), ('with', agg[s][1])):
+            row[cfg] = [sum(r['wall_s'] for r in rs), sum(r['out'] for r in rs), sum(r['in_total'] for r in rs), sum(r['cost'] or 0 for r in rs)]
+            tot[cfg] = [x + y for x, y in zip(tot[cfg], row[cfg])]
+        w(f"| `{s}` | {fmt(row['none'][0])} → {fmt(row['with'][0])} ({delta(row['none'][0], row['with'][0])}) | {fmt(row['none'][1])} → {fmt(row['with'][1])} ({delta(row['none'][1], row['with'][1])}) "
+          f"| {fmt(row['none'][2])} → {fmt(row['with'][2])} ({delta(row['none'][2], row['with'][2])}) | {fmt(row['none'][3], 2)} → {fmt(row['with'][3], 2)} ({delta(row['none'][3], row['with'][3])}) |")
+    w(f"| **all** | {fmt(tot['none'][0])} → {fmt(tot['with'][0])} ({delta(tot['none'][0], tot['with'][0])}) | {fmt(tot['none'][1])} → {fmt(tot['with'][1])} ({delta(tot['none'][1], tot['with'][1])}) "
+      f"| {fmt(tot['none'][2])} → {fmt(tot['with'][2])} ({delta(tot['none'][2], tot['with'][2])}) | {fmt(tot['none'][3], 2)} → {fmt(tot['with'][3], 2)} ({delta(tot['none'][3], tot['with'][3])}) |")
     w('\n`input tok` sums every API call of the run (context is re-read each turn), cache reads included, so it grows with turns. '
       '`cost` is what the CLI billed at list price after cache discounts.\n')
 
@@ -560,8 +576,8 @@ def cmd_report(a):
     w(f'- Runs not counted (non-zero exit, timeout or error result): {len(bad)}' + ''.join(f"\n  - `{r['skill']}/{r['case']}` r{r['rep']} {r['config']}: rc={r['rc']} timeout={r['timed_out']} terminal={r.get('terminal')}" for r in bad))
     w(f'- Transcripts that named the real eval folder: {len(leaks) or "none"}')
     nofile = [r for r in ok if r['config'] == 'with' and r['first_ctx'] and agg.get(r['skill']) and
-              r['first_ctx'] - (med([x['first_ctx'] for x in agg[r['skill']][0]]) or 0) < 800]
-    w(f"- `with` runs whose first-call context is under 800 tokens larger than `none` (the skill may not have loaded): {len(nofile) or 'none'}")
+              r['first_ctx'] - (med([x['first_ctx'] for x in agg[r['skill']][0]]) or 0) < 450]
+    w(f"- `with` runs whose first-call context is under 450 tokens larger than `none` (the skill may not have loaded): {len(nofile) or 'none'}")
     spend = sum(r['cost'] or 0 for r in rows)
     gspend = sum(r['grader_cost'] or 0 for r in rows)
     styles = sum(json.load(open(p)).get('cost', 0) for p in glob.glob(f'{a.out}/styles/*__*.json'))
